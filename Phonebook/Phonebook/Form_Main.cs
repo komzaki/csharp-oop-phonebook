@@ -50,10 +50,12 @@ namespace Phonebook
             if (ExistContact != null)
             {
                 phonebook.AddContactInfo(newcontact);
+                MessageBox.Show("Added info to existing contact!", "Same name detected");
             }
             else {
 
                 phonebook.AddContact(newcontact);
+                MessageBox.Show("Added new contact");
             }
 
 
@@ -97,6 +99,9 @@ namespace Phonebook
                 {
                     Details ViewDetailsForm = new Details(F);
                     ViewDetailsForm.ShowDialog();
+
+                    phonebook.EditContact(ViewDetailsForm.contact);
+
                 }
 
             }
@@ -128,7 +133,7 @@ namespace Phonebook
                 {
                     phonebook.DeleteContact(F);
                 }
-
+                MessageBox.Show(SelectedName + " is now Deleted!");
             }
             RefreshPhonebook();
         }

@@ -34,6 +34,7 @@
             this.dataGridView_number = new System.Windows.Forms.DataGridView();
             this.dataGridView_address = new System.Windows.Forms.DataGridView();
             this.button_close = new System.Windows.Forms.Button();
+            this.button_edit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_email)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_number)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_address)).BeginInit();
@@ -89,11 +90,22 @@
             this.button_close.UseVisualStyleBackColor = true;
             this.button_close.Click += new System.EventHandler(this.button_close_Click);
             // 
+            // button_edit
+            // 
+            this.button_edit.Location = new System.Drawing.Point(705, 338);
+            this.button_edit.Name = "button_edit";
+            this.button_edit.Size = new System.Drawing.Size(75, 23);
+            this.button_edit.TabIndex = 6;
+            this.button_edit.Text = "Edit";
+            this.button_edit.UseVisualStyleBackColor = true;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 393);
+            this.Controls.Add(this.button_edit);
             this.Controls.Add(this.button_close);
             this.Controls.Add(this.dataGridView_address);
             this.Controls.Add(this.dataGridView_number);
@@ -123,5 +135,6 @@
         private System.Windows.Forms.DataGridView dataGridView_number;
         private System.Windows.Forms.DataGridView dataGridView_address;
         private System.Windows.Forms.Button button_close;
+        private System.Windows.Forms.Button button_edit;
     }
 }

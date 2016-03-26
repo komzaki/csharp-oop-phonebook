@@ -282,7 +282,7 @@
             // 
             // Delete
             // 
-            this.Delete.Location = new System.Drawing.Point(434, 376);
+            this.Delete.Location = new System.Drawing.Point(422, 376);
             this.Delete.Name = "Delete";
             this.Delete.Size = new System.Drawing.Size(75, 23);
             this.Delete.TabIndex = 13;
@@ -302,6 +302,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox_details);
             this.Name = "Form_Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phonebook";
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.groupBox_address.ResumeLayout(false);

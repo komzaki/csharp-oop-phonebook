@@ -27,7 +27,13 @@ namespace Phonebook
 
         public void EditContact(Contact x) {
 
-           
+           for(int i = 0; i < Contacts.Count; i++)
+            {
+                if(Contacts[i].name == x.name)
+                {
+                    Contacts[i] = x;
+                }
+            }
 
         }
 
@@ -56,6 +62,17 @@ namespace Phonebook
 
         }
 
-        public void SearchContact(Contact x) { }
+        public Contact SearchContact(string name) {
+
+            foreach (Contact C in Contacts)
+            {
+                if (C.name == name)
+                {
+                    return C;
+                }
+            }
+            return null;
+
+        }
     }
 }
