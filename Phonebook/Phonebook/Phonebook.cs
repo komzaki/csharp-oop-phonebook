@@ -22,7 +22,7 @@ namespace Phonebook
 
         public void DeleteContact(Contact x)
         {
-            
+            Contacts.Remove(x);
         }
 
         public void EditContact(Contact x) {

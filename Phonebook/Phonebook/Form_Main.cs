@@ -100,6 +100,7 @@ namespace Phonebook
                 }
 
             }
+            RefreshPhonebook();
 
         }
 
@@ -113,6 +114,23 @@ namespace Phonebook
                 }
             }
             return null;
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            string SelectedName;
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                SelectedName = dataGridView1.SelectedCells[0].Value.ToString();
+
+                Contact F = FindContact(SelectedName);
+                if (F != null)
+                {
+                    phonebook.DeleteContact(F);
+                }
+
+            }
+            RefreshPhonebook();
         }
     }
 }
