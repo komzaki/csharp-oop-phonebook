@@ -8,11 +8,24 @@ namespace Phonebook
 {
     class Phonebook
     {
-        List<Contact> Contacts;
+        public List<Contact> Contacts;
 
-        void AddContact(Contact x) { }
-        void DeleteContact(Contact x) { }
-        void EditContact(Contact x) { }
-        void SearchContact(Contact x) { }
+        public Phonebook()
+        {
+            Contacts = new List<Contact>();
+        }
+
+        public void AddContact(Contact x)
+        {
+            Contacts.Add(x);
+        }
+
+        public void DeleteContact(Contact x)
+        {
+            
+        }
+
+        public void EditContact(Contact x) { }
+        public void SearchContact(Contact x) { }
     }
 }

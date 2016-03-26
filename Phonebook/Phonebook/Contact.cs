@@ -8,9 +8,16 @@ namespace Phonebook
 {
     class Contact
     {
-        List<Address> address;
-        List<string> contactnumbers;
-        List<string> emailAds;
-        string name;
+        public List<Address> address;
+        public List<string> contactnumbers;
+        public List<string> emailAds;
+        public string name;
+
+        public Contact()
+        {
+            address = new List<Address>();
+            contactnumbers = new List<string>();
+            emailAds = new List<string>();
+        }
     }
 }

@@ -12,9 +12,79 @@ namespace Phonebook
 {
     public partial class Form_Main : Form
     {
+        Phonebook phonebook;
+
         public Form_Main()
         {
             InitializeComponent();
+            phonebook = new Phonebook();
+        }
+
+        private void Form_Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+           
+            Address newaddress = new Address();
+
+            Contact newcontact = new Contact();
+
+            newaddress.brgy = textBox_barangay.Text;
+            newaddress.city = textBox_city.Text;
+            newaddress.country = textBox_country.Text;
+            newaddress.number = Convert.ToInt32(textBox_number.Text);
+            newaddress.street = textBox_street.Text;
+            newaddress.zip = textBox_zip.Text;
+
+            newcontact.address.Add(newaddress);
+            newcontact.emailAds.Add(textBox_email.Text);
+            newcontact.name = textBox_name.Text;
+
+            phonebook.AddContact(newcontact);
+
+            RefreshPhonebook();
+        }
+
+        private void RefreshPhonebook()
+        {
+            
+            dataGridView1.DataSource = GetResultsTable();
+            dataGridView1.Columns[0].Width = 200;
+            dataGridView1.Columns[0].FillWeight = 200;
+
+            //listView_phonebook.Clear();
+
+            //if (phonebook.Contacts.Count > 10)
+            //{
+
+
+            //    for (int i = 0; i < phonebook.Contacts.Count; i++)
+            //    {
+            //        listView_phonebook.Items.Add(new ListViewItem(phonebook.Contacts[i].name));
+            //    }
+
+
+
+            //}
+            //listView_phonebook.View = View.Details;
+        }
+
+        public DataTable GetResultsTable()
+        {
+            DataTable table = new DataTable();
+            table.Columns.Add("Name".ToString());
+            for (int i = 0; i < phonebook.Contacts.Count; i++)
+            {
+                DataRow dr = table.NewRow();
+                dr["Name"] = phonebook.Contacts[i].name;
+                table.Rows.Add(dr);
+            }
+
+
+            return table;
         }
     }
 }
