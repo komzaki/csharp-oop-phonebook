@@ -25,7 +25,37 @@ namespace Phonebook
             
         }
 
-        public void EditContact(Contact x) { }
+        public void EditContact(Contact x) {
+
+           
+
+        }
+
+        public void AddContactInfo(Contact x)
+        {
+
+            for (int i = 0; i < Contacts.Count; i++)
+            {
+                if (Contacts[i].name == x.name)
+                {
+                    if (x.emailAds[0] != null)
+                    {
+                        Contacts[i].emailAds.Add(x.emailAds[0]);
+                    }
+                    if(x.contactnumbers[0] != null)
+                    {
+                        Contacts[i].contactnumbers.Add(x.contactnumbers[0]);
+                    }
+                    if (x.address.Count > 0)
+                    {
+                        Contacts[i].address.Add(x.address[0]);
+                    }
+
+                }
+            }
+
+        }
+
         public void SearchContact(Contact x) { }
     }
 }

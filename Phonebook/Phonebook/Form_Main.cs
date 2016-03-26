@@ -27,10 +27,12 @@ namespace Phonebook
 
         private void button_add_Click(object sender, EventArgs e)
         {
-           
-            Address newaddress = new Address();
+
+
 
             Contact newcontact = new Contact();
+
+            Address newaddress = new Address();
 
             newaddress.brgy = textBox_barangay.Text;
             newaddress.city = textBox_city.Text;
@@ -41,35 +43,31 @@ namespace Phonebook
 
             newcontact.address.Add(newaddress);
             newcontact.emailAds.Add(textBox_email.Text);
+            newcontact.contactnumbers.Add(textBox_contactnum.Text);
             newcontact.name = textBox_name.Text;
 
-            phonebook.AddContact(newcontact);
+            Contact ExistContact = FindContact(textBox_name.Text);
+            if (ExistContact != null)
+            {
+                phonebook.AddContactInfo(newcontact);
+            }
+            else {
+
+                phonebook.AddContact(newcontact);
+            }
+
+
 
             RefreshPhonebook();
         }
 
         private void RefreshPhonebook()
         {
-            
+
             dataGridView1.DataSource = GetResultsTable();
             dataGridView1.Columns[0].Width = 200;
             dataGridView1.Columns[0].FillWeight = 200;
 
-            //listView_phonebook.Clear();
-
-            //if (phonebook.Contacts.Count > 10)
-            //{
-
-
-            //    for (int i = 0; i < phonebook.Contacts.Count; i++)
-            //    {
-            //        listView_phonebook.Items.Add(new ListViewItem(phonebook.Contacts[i].name));
-            //    }
-
-
-
-            //}
-            //listView_phonebook.View = View.Details;
         }
 
         public DataTable GetResultsTable()
@@ -85,6 +83,36 @@ namespace Phonebook
 
 
             return table;
+        }
+
+        private void button_view_Click(object sender, EventArgs e)
+        {
+            string SelectedName;
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                SelectedName = dataGridView1.SelectedCells[0].Value.ToString();
+
+                Contact F = FindContact(SelectedName);
+                if (F != null)
+                {
+                    Details ViewDetailsForm = new Details(F);
+                    ViewDetailsForm.ShowDialog();
+                }
+
+            }
+
+        }
+
+        private Contact FindContact(string name)
+        {
+            foreach (Contact C in phonebook.Contacts)
+            {
+                if (C.name == name)
+                {
+                    return C;
+                }
+            }
+            return null;
         }
     }
 }
